@@ -1,6 +1,7 @@
 package com.pkbatagoda.memorymaze
 
 import android.animation.ArgbEvaluator
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.jinatonic.confetti.CommonConfetti
 import com.google.android.material.snackbar.Snackbar
 import com.pkbatagoda.memorymaze.models.BoardSize
 import com.pkbatagoda.memorymaze.models.MemoryCard
@@ -175,6 +177,7 @@ class MainActivity : AppCompatActivity() {
             tvNumPairs.text = "Pairs: ${memoryGame.numPairsFound} / ${boardSize.getNumPairs()}"
             if (memoryGame.haveWonGame()) {
                 Snackbar.make(clRoot, "You won! congratulations.", Snackbar.LENGTH_LONG).show()
+                CommonConfetti.rainingConfetti(clRoot, intArrayOf(Color.YELLOW, Color.GREEN, Color.MAGENTA)).oneShot()
             }
         }
         tvNumMoves.text = "Moves: ${memoryGame.getNumMoves()}"
